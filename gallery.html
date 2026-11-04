@@ -1,0 +1,911 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=0.7">
+<meta name="theme-color" content="#f5e9dc">
+
+<title>Our Little Music Room ♡</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background:
+        radial-gradient(ellipse at 15% 15%, rgba(255,255,255,.8), transparent 35%),
+        radial-gradient(ellipse at 85% 80%, rgba(190,135,130,.16), transparent 40%),
+        linear-gradient(135deg, #f5e9dc, #ead8cb, #f7e9e4) !important;
+    background-attachment: fixed !important;
+    color: #80545a;
+}
+
+.music-page {
+    width: min(100% - 30px, 850px);
+    margin: 55px auto;
+    padding: 55px 35px;
+    position: relative;
+    text-align: center;
+
+    background: #fffaf0;
+    border: 1px solid #d8b7a7;
+
+    box-shadow:
+        0 15px 35px rgba(76,47,37,.16),
+        inset 0 0 35px rgba(175,130,90,.09);
+
+    animation: pageReveal 1s ease both;
+}
+
+.music-page::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px dashed rgba(167,107,117,.45);
+    pointer-events: none;
+}
+
+@keyframes pageReveal {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.kicker {
+    font-family: Georgia, serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #a26770;
+}
+
+h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(32px, 6vw, 48px);
+    line-height: 1.2;
+    color: #432d26;
+    margin: 20px 0;
+}
+
+h1 em {
+    color: #a76b75;
+}
+
+.intro {
+    font-family: Georgia, serif;
+    line-height: 1.8;
+    color: #806052;
+}
+
+/* VINYL RECORD */
+
+.vinyl-container {
+    display: flex;
+    justify-content: center;
+    margin: 35px auto;
+}
+
+.vinyl {
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+
+    background:
+        repeating-radial-gradient(
+            circle,
+            #282321 0px,
+            #282321 2px,
+            #38302d 3px,
+            #282321 5px
+        );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 12px 25px rgba(0,0,0,.25);
+
+    position: relative;
+}
+
+.vinyl.playing {
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.vinyl-label {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+
+    background: radial-gradient(circle, #f8e9df, #a76b75);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: #fffaf0;
+    border: 4px solid #ead0c4;
+
+    font-family: Georgia, serif;
+}
+
+.vinyl-label span {
+    font-size: 24px;
+}
+
+/* PLAYER */
+
+.player-card {
+    position: relative;
+    max-width: 470px;
+    margin: 30px auto;
+    padding: 28px 23px;
+
+    background: #f8eee1;
+    border: 1px solid #d8b7a7;
+
+    box-shadow: 0 8px 20px rgba(76,47,37,.1);
+}
+
+.now-playing {
+    font-family: Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #a26770;
+}
+
+.song-title {
+    font-family: Georgia, serif;
+    font-size: 23px;
+    color: #432d26;
+    margin: 12px 0 5px;
+}
+
+.artist {
+    color: #a17b69;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 14px;
+}
+
+/* PROGRESS */
+
+.progress-container {
+    margin: 25px 0 8px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    border-radius: 10px;
+    background: #dfc8b9;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: #a76b75;
+    border-radius: 10px;
+}
+
+.time-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #936b5e;
+    margin-top: 8px;
+}
+
+/* CONTROLS */
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 23px;
+    margin: 23px 0;
+}
+
+.control-btn {
+    border: none;
+    background: transparent;
+    color: #80545a;
+    font-size: 25px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.control-btn:hover {
+    color: #a76b75;
+    transform: scale(1.2);
+}
+
+.play-btn {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: #a76b75;
+    color: white;
+    font-size: 25px;
+    border: 1px solid #b7837d;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(105,65,42,.2);
+    transition: .3s;
+}
+
+.play-btn:hover {
+    background: #80545a;
+    transform: scale(1.08);
+}
+
+/* VOLUME */
+
+.volume-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    color: #80545a;
+    margin-top: 15px;
+}
+
+.volume-row input {
+    width: 110px;
+    accent-color: #a76b75;
+}
+
+/* PLAYLIST */
+
+.playlist {
+    max-width: 470px;
+    margin: 35px auto;
+    text-align: left;
+}
+
+.playlist h2 {
+    font-family: Georgia, serif;
+    text-align: center;
+    color: #432d26;
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+
+.song-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 13px;
+    margin-bottom: 9px;
+
+    background: rgba(255,250,240,.8);
+    border: 1px solid #e5cfc1;
+
+    cursor: pointer;
+    transition: .3s;
+}
+
+.song-item:hover,
+.song-item.active {
+    background: #ead0c4;
+    border-color: #b7837d;
+    transform: translateX(4px);
+}
+
+.song-icon {
+    font-size: 22px;
+    color: #a76b75;
+}
+
+.song-info {
+    flex: 1;
+}
+
+.song-info strong {
+    display: block;
+    font-family: Georgia, serif;
+    color: #80545a;
+    font-size: 14px;
+}
+
+.song-info small {
+    color: #a17b69;
+    font-size: 11px;
+}
+
+.song-number {
+    color: #a17b69;
+    font-family: Georgia, serif;
+    font-size: 12px;
+}
+
+/* DECORATIONS */
+
+.music-note {
+    position: fixed;
+    bottom: -30px;
+    color: #a76b75;
+    pointer-events: none;
+    z-index: 1;
+    animation: noteFloat 7s linear forwards;
+}
+
+@keyframes noteFloat {
+    0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+    }
+    20% { opacity: .6; }
+    100% {
+        transform: translateY(-110vh) rotate(35deg);
+        opacity: 0;
+    }
+}
+
+/* NAVIGATION */
+
+.nav-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 35px;
+}
+
+.nav-row .button {
+    padding: 13px 24px;
+    background: linear-gradient(135deg, #f8e9df, #ead0c4);
+    color: #80545a;
+    border: 1px solid #b7837d;
+    border-radius: 3px;
+    font-family: Georgia, serif;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.nav-row .button:hover {
+    background: #a76b75;
+    color: white;
+    transform: translateY(-4px);
+}
+
+.page-number {
+    margin-top: 35px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #a17b69;
+}
+
+@media(max-width:600px) {
+    .music-page {
+        padding: 50px 18px;
+    }
+
+    .vinyl {
+        width: 195px;
+        height: 195px;
+    }
+
+    .player-card {
+        padding: 23px 15px;
+    }
+
+    .controls {
+        gap: 17px;
+    }
+}
+
+@media(prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="grain"></div>
+
+<header class="topbar">
+    <a class="brand" href="index.html">
+        ♡ OUR LITTLE LOVE STORY
+    </a>
+
+    <a class="mini-link" href="game.html">
+        ← Previous chapter
+    </a>
+</header>
+
+<main class="page-shell">
+
+<section class="music-page">
+
+    <p class="kicker">
+        CHAPTER IV · OUR FAVORITE MELODIES
+    </p>
+
+    <h1>
+        Our little<br>
+        <em>music room</em>
+    </h1>
+
+    <p class="intro">
+        Every song reminds me of you.<br>
+        A little melody, a thousand memories. ♡
+    </p>
+
+    <!-- VINYL RECORD -->
+
+    <div class="vinyl-container">
+        <div class="vinyl" id="vinyl">
+            <div class="vinyl-label">
+                <span>♫</span>
+                <small>FOR YOU</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- MUSIC PLAYER -->
+
+    <div class="player-card">
+
+        <p class="now-playing">NOW PLAYING ♡</p>
+
+        <h2 class="song-title" id="songTitle">
+            Choose a song
+        </h2>
+
+        <p class="artist" id="artist">
+            A melody for you
+        </p>
+
+        <audio id="audioPlayer"></audio>
+
+        <div class="progress-container">
+
+            <div class="progress-bar" id="progressBar">
+                <div class="progress" id="progress"></div>
+            </div>
+
+            <div class="time-row">
+                <span id="currentTime">0:00</span>
+                <span id="duration">0:00</span>
+            </div>
+
+        </div>
+
+        <div class="controls">
+
+            <button class="control-btn"
+            id="prevBtn"
+            aria-label="Previous song">
+                ⏮
+            </button>
+
+            <button class="play-btn"
+            id="playBtn"
+            aria-label="Play music">
+                ▶
+            </button>
+
+            <button class="control-btn"
+            id="nextBtn"
+            aria-label="Next song">
+                ⏭
+            </button>
+
+        </div>
+
+        <div class="volume-row">
+            <span>♫</span>
+            <input
+                type="range"
+                id="volume"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0.7"
+                aria-label="Volume">
+            <span>♪</span>
+        </div>
+       <p class="artist" id="artist">
+            —VOLUME—
+        </p>
+    </div>
+
+    <!-- PLAYLIST -->
+
+    <div class="playlist">
+
+        <h2>♡ Her Favorite Songs ♡</h2>
+
+        <div id="songList"></div>
+
+    </div>
+
+    <p class="intro">
+        "If love had a sound, it would be every song
+        that reminds me of you." ♡
+    </p>
+
+    <div class="nav-row">
+
+        <a class="button" href="game.html">
+            ← Back
+        </a>
+
+        <a class="button" href="letter.html">
+            Read my letter →
+        </a>
+
+    </div>
+
+    <div class="page-number">
+        OUR LITTLE MUSIC COLLECTION
+    </div>
+
+</section>
+
+</main>
+
+<footer class="site-footer">
+    SOME SONGS SOUND LIKE HOME, AND YOU ARE MINE ♡
+</footer>
+
+<script src="script.js"></script>
+
+<script>
+
+/* =================================
+   ADD YOUR FAVORITE SONGS HERE
+================================= */
+
+const songs = [
+
+    {
+        title: "Panata",
+        artist: "Tothapi",
+        file: "panata.mp3"
+    },
+
+    {
+        title: "About You",
+        artist: "1975",
+        file: "aboutyou.mp3"
+    },
+    
+    {
+        title: "Padaba Taka",
+        artist: "Dwta",
+        file: "padabataka.mp3"
+    },
+
+    {
+        title: "18",
+        artist: "One Direction",
+        file: "18hehdhe.mp3"
+    },
+
+    {
+        title: "Ikaw at Ako",
+        artist: "TJ Monterde",
+        file: "ikawatako.mp3"
+    }
+
+];
+
+/* =================================
+   PLAYER ELEMENTS
+================================= */
+
+const audio = document.getElementById("audioPlayer");
+const playBtn = document.getElementById("playBtn");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+const songTitle = document.getElementById("songTitle");
+const artist = document.getElementById("artist");
+
+const progress = document.getElementById("progress");
+const progressBar = document.getElementById("progressBar");
+
+const currentTime = document.getElementById("currentTime");
+const duration = document.getElementById("duration");
+
+const volume = document.getElementById("volume");
+const vinyl = document.getElementById("vinyl");
+const songList = document.getElementById("songList");
+
+let songIndex = 0;
+
+/* =================================
+   FORMAT TIME
+================================= */
+
+function formatTime(seconds) {
+
+    if (!Number.isFinite(seconds)) return "0:00";
+
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+
+    return mins + ":" + String(secs).padStart(2, "0");
+
+}
+
+/* =================================
+   CREATE PLAYLIST
+================================= */
+
+function renderPlaylist() {
+
+    songList.innerHTML = "";
+
+    songs.forEach((song, index) => {
+
+        const item = document.createElement("div");
+
+        item.className = "song-item";
+
+        item.innerHTML = `
+            <span class="song-icon">♫</span>
+
+            <div class="song-info">
+                <strong></strong>
+                <small></small>
+            </div>
+
+            <span class="song-number">
+                ${String(index + 1).padStart(2, "0")}
+            </span>
+        `;
+
+        item.querySelector("strong").textContent = song.title;
+        item.querySelector("small").textContent = song.artist;
+
+        item.addEventListener("click", () => {
+            loadSong(index);
+            playSong();
+        });
+
+        songList.appendChild(item);
+
+    });
+
+}
+
+/* =================================
+   LOAD SONG
+================================= */
+
+function loadSong(index) {
+
+    songIndex = index;
+
+    const song = songs[songIndex];
+
+    audio.src = song.file;
+
+    songTitle.textContent = song.title;
+    artist.textContent = song.artist;
+
+    updatePlaylist();
+
+    progress.style.width = "0%";
+    currentTime.textContent = "0:00";
+    duration.textContent = "0:00";
+
+}
+
+/* =================================
+   UPDATE PLAYLIST
+================================= */
+
+function updatePlaylist() {
+
+    document.querySelectorAll(".song-item").forEach((item, index) => {
+
+        item.classList.toggle("active", index === songIndex);
+
+    });
+
+}
+
+/* =================================
+   PLAY MUSIC
+================================= */
+
+function playSong() {
+
+    audio.play().then(() => {
+
+        playBtn.textContent = "Ⅱ";
+        vinyl.classList.add("playing");
+
+    }).catch(error => {
+
+        console.log("Unable to play audio:", error);
+        playBtn.textContent = "▶";
+        vinyl.classList.remove("playing");
+
+    });
+
+}
+
+/* =================================
+   PAUSE MUSIC
+================================= */
+
+function pauseSong() {
+
+    audio.pause();
+
+    playBtn.textContent = "▶";
+
+    vinyl.classList.remove("playing");
+
+}
+
+/* =================================
+   PLAY / PAUSE BUTTON
+================================= */
+
+playBtn.addEventListener("click", () => {
+
+    if (!audio.src) {
+        loadSong(songIndex);
+    }
+
+    if (audio.paused) {
+        playSong();
+    } else {
+        pauseSong();
+    }
+
+});
+
+/* =================================
+   NEXT SONG
+================================= */
+
+function nextSong() {
+
+    songIndex = (songIndex + 1) % songs.length;
+
+    loadSong(songIndex);
+    playSong();
+
+}
+
+nextBtn.addEventListener("click", nextSong);
+
+/* =================================
+   PREVIOUS SONG
+================================= */
+
+prevBtn.addEventListener("click", () => {
+
+    songIndex = (songIndex - 1 + songs.length) % songs.length;
+
+    loadSong(songIndex);
+    playSong();
+
+});
+
+/* =================================
+   MUSIC PROGRESS
+================================= */
+
+audio.addEventListener("timeupdate", () => {
+
+    if (audio.duration) {
+
+        const percent = (audio.currentTime / audio.duration) * 100;
+
+        progress.style.width = percent + "%";
+
+        currentTime.textContent = formatTime(audio.currentTime);
+
+    }
+
+});
+
+audio.addEventListener("loadedmetadata", () => {
+
+    duration.textContent = formatTime(audio.duration);
+
+});
+
+audio.addEventListener("ended", nextSong);
+
+/* =================================
+   CLICK PROGRESS BAR
+================================= */
+
+progressBar.addEventListener("click", event => {
+
+    if (!audio.duration) return;
+
+    const rect = progressBar.getBoundingClientRect();
+
+    const percent = (event.clientX - rect.left) / rect.width;
+
+    audio.currentTime = percent * audio.duration;
+
+});
+
+/* =================================
+   VOLUME
+================================= */
+
+audio.volume = 0.7;
+
+volume.addEventListener("input", () => {
+
+    audio.volume = Number(volume.value);
+
+});
+
+/* =================================
+   FLOATING MUSIC NOTES
+================================= */
+
+const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+).matches;
+
+if (!reduceMotion) {
+
+    function createMusicNote() {
+
+        const note = document.createElement("span");
+
+        note.className = "music-note";
+
+        note.textContent = ["♫", "♪", "♬", "♡"][
+            Math.floor(Math.random() * 4)
+        ];
+
+        note.style.left = Math.random() * 100 + "vw";
+
+        note.style.fontSize =
+            (15 + Math.random() * 15) + "px";
+
+        note.style.animationDuration =
+            (5 + Math.random() * 4) + "s";
+
+        document.body.appendChild(note);
+
+        setTimeout(() => note.remove(), 10000);
+
+    }
+
+    setInterval(createMusicNote, 1200);
+
+}
+
+/* INITIALIZE */
+
+renderPlaylist();
+loadSong(0);
+
+</script>
+
+</body>
+</html>

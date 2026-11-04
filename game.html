@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=0.7">
+<meta name="theme-color" content="#f5e9dc">
+
+<title>Catch My Love ♡</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* =====================================
+   VINTAGE ARCADE
+   MATCHING SURPRISE.HTML DESIGN
+===================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Georgia, "Times New Roman", serif;
+    color: #72534f;
+    background:
+        radial-gradient(circle at top left, #fff8ed, transparent 40%),
+        linear-gradient(135deg, #f5e9dc, #ead8cb, #f7e9e4);
+}
+
+/* PAGE ANIMATION */
+
+.paper-page {
+    position: relative;
+    width: 100%;
+    animation: pageReveal 1s ease both;
+}
+
+@keyframes pageReveal {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(.97);
+        filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* INTRO ANIMATIONS */
+
+.kicker,
+h1,
+.intro {
+    animation: fadeUp 1s ease both;
+}
+
+.kicker { animation-delay: .2s; }
+h1 { animation-delay: .4s; }
+.intro { animation-delay: .6s; }
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =====================================
+   VINTAGE ARCADE FRAME
+===================================== */
+
+.game-frame {
+    position: relative;
+    overflow: hidden;
+
+    width: 100%;
+    padding: 25px;
+
+    background: rgba(248, 238, 225, .96);
+
+    border: 1px solid #b7837d;
+    border-radius: 5px;
+
+    outline: 1px dashed rgba(167, 107, 117, .45);
+    outline-offset: -10px;
+
+    box-shadow:
+        0 15px 35px rgba(107, 73, 67, .13),
+        inset 0 0 30px rgba(190, 151, 126, .12);
+
+    animation: arcadeAppear 1s ease .7s both;
+}
+
+@keyframes arcadeAppear {
+    from {
+        opacity: 0;
+        transform: scale(.94) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* SCORE LINE */
+
+.scoreline {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    font-family: Georgia, serif;
+    color: #805b52;
+    font-size: 12px;
+    letter-spacing: 1px;
+
+    padding: 5px 5px 15px;
+    border-bottom: 1px dashed #c9a18e;
+}
+
+.scoreline b {
+    display: inline-block;
+    color: #a26770;
+    font-size: 20px;
+    transition: transform .2s ease;
+}
+
+.scoreline b.score-pop {
+    animation: scorePop .35s ease;
+}
+
+@keyframes scorePop {
+    50% {
+        transform: scale(1.6);
+    }
+}
+
+#gameStatus {
+    color: #a26770;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+/* =====================================
+   GAME AREA
+===================================== */
+
+.game-area {
+    position: relative;
+    height: 300px;
+    margin: 20px 0;
+
+    overflow: hidden;
+
+    border: 1px dashed #b7837d;
+    border-radius: 5px;
+
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(255, 255, 255, .65),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #fff9ee,
+            #ead0c4
+        );
+
+    box-shadow:
+        inset 0 4px 15px rgba(100, 60, 30, .08);
+}
+
+/* GAME HINT */
+
+#gameHint {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    text-align: center;
+    line-height: 2;
+
+    color: #986d59;
+    font-family: Georgia, serif;
+    font-style: italic;
+
+    animation: hintFloat 2s ease-in-out infinite;
+}
+
+@keyframes hintFloat {
+    50% {
+        transform: translateY(calc(-50% - 8px));
+    }
+}
+
+/* HEART TARGETS */
+
+.game-heart {
+    position: absolute;
+    border: none;
+    background: transparent;
+    padding: 5px;
+
+    font-size: 35px;
+    line-height: 1;
+
+    cursor: pointer;
+    z-index: 3;
+
+    filter: drop-shadow(
+        0 4px 5px rgba(120, 50, 60, .2)
+    );
+
+    animation:
+        heartPop .35s ease,
+        heartPulse 1s ease-in-out infinite;
+}
+
+@keyframes heartPop {
+    from {
+        transform: scale(0) rotate(-30deg);
+    }
+    to {
+        transform: scale(1) rotate(0);
+    }
+}
+
+@keyframes heartPulse {
+    50% {
+        scale: 1.18;
+    }
+}
+
+.game-heart:active {
+    transform: scale(1.4);
+}
+
+.heart-caught {
+    animation: heartCaught .35s ease forwards;
+}
+
+@keyframes heartCaught {
+    to {
+        opacity: 0;
+        transform: scale(2.5) rotate(30deg);
+    }
+}
+
+/* COUNTDOWN */
+
+.countdown {
+    position: absolute;
+    inset: 0;
+
+    display: grid;
+    place-items: center;
+
+    z-index: 5;
+
+    font-size: 75px;
+    font-family: Georgia, serif;
+    color: #a26770;
+
+    background: rgba(255, 248, 237, .88);
+
+    animation: countdownPop .5s ease;
+}
+
+@keyframes countdownPop {
+    from {
+        opacity: 0;
+        transform: scale(.6);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* =====================================
+   VINTAGE START BUTTON
+===================================== */
+
+#startGame {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    cursor: pointer;
+
+    transition: .3s ease;
+}
+
+#startGame:hover {
+    transform: translateY(-3px);
+}
+
+#startGame:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* =====================================
+   REWARD MESSAGE
+===================================== */
+
+.message-box {
+    position: relative;
+    z-index: 1;
+
+    text-align: center;
+    line-height: 1.9;
+
+    color: #805b52;
+    font-family: Georgia, serif;
+    font-size: 14px;
+
+    transition: all .5s ease;
+}
+
+.reward-show {
+    animation: rewardReveal 1s ease both;
+}
+
+@keyframes rewardReveal {
+    0% {
+        opacity: 0;
+        transform: scale(.7);
+    }
+    70% {
+        opacity: 1;
+        transform: scale(1.06);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.message-box strong {
+    color: #a26770;
+}
+
+/* =====================================
+   CONFETTI
+===================================== */
+
+.confetti {
+    position: absolute;
+    top: -15px;
+
+    pointer-events: none;
+    z-index: 10;
+
+    animation: confettiFall 2.5s linear forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(350px) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* =====================================
+   FLOATING HEARTS
+===================================== */
+
+.floating-heart {
+    position: fixed;
+    bottom: -30px;
+
+    color: #bc7581;
+    opacity: 0;
+
+    pointer-events: none;
+    z-index: 1;
+
+    animation: heartRise 8s linear forwards;
+}
+
+@keyframes heartRise {
+    0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+    }
+    15% {
+        opacity: .45;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* =====================================
+   GOLDEN SPARKLES
+===================================== */
+
+.sparkle {
+    position: fixed;
+    top: -10px;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+    background: #c69b58;
+
+    box-shadow: 0 0 8px #d6b477;
+
+    pointer-events: none;
+    z-index: 1;
+
+    animation: sparkleFall 6s linear forwards;
+}
+
+@keyframes sparkleFall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* NAVIGATION */
+
+.nav-row {
+    animation: fadeUp 1s ease 1.2s both;
+}
+
+.button {
+    transition: .3s ease;
+}
+
+.button:hover {
+    transform: translateY(-4px);
+}
+
+/* VINTAGE BUTTONS */
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 23px;
+    border: 1px solid #b7837d;
+    border-radius: 3px;
+    background: linear-gradient(135deg, #f8e9df, #ead0c4);
+    color: #80545a;
+    text-decoration: none;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    box-shadow: 0 5px 12px rgba(94,57,50,.1);
+    transition: .35s ease;
+}
+    
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 480px) {
+
+    .game-frame {
+        padding: 20px;
+    }
+
+    .game-area {
+        height: 280px;
+    }
+
+    .game-heart {
+        font-size: 32px;
+    }
+
+    .scoreline {
+        font-size: 11px;
+    }
+
+    .message-box {
+        font-size: 13px;
+    }
+
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="grain"></div>
+
+<header class="topbar">
+
+    <a class="brand" href="index.html">
+        ♡ OUR LITTLE LOVE STORY
+    </a>
+
+    <a class="mini-link" href="flowers.html">
+        ← Previous chapter
+    </a>
+
+</header>
+
+<main class="page-shell">
+
+<section class="paper-page">
+
+    <p class="kicker">
+        CHAPTER III · A TINY ARCADE DATE
+    </p>
+
+    <h1>
+        Catch my<br>
+        <em>heart!</em> ♡
+    </h1>
+
+    <p class="intro">
+        Tap 10 hearts before they disappear<br>
+        to unlock a secret message.<br>
+        <u>Ready babii!</u>
+    </p>
+
+    <!-- ARCADE GAME -->
+
+    <div class="game-frame">
+
+        <div class="scoreline">
+
+            <span>
+                HEARTS: <b id="score">0</b> / 10
+            </span>
+
+            <span id="gameStatus">
+                PRESS START ♡
+            </span>
+
+        </div>
+
+        <div class="game-area" id="gameArea">
+
+            <p id="gameHint">
+                Your hearts will appear here!<br>
+                ♡ ♡ ♡
+            </p>
+
+        </div>
+
+        <button class="button" id="startGame" type="button">
+            Start the game ♡
+        </button>
+
+        <p id="gameReward" class="message-box" aria-live="polite"></p>
+
+    </div>
+
+    <!-- NAVIGATION -->
+
+    <div class="nav-row">
+
+        <a class="button secondary" href="flowers.html">
+            ← Back
+        </a>
+
+        <a class="button" href="gallery.html">
+            Listen to a Song →
+        </a>
+
+    </div>
+
+    <div class="page-number">
+        A GAME MADE FOR MY FAVORITE PERSON
+    </div>
+
+</section>
+
+</main>
+
+<footer class="site-footer">
+    YOU'VE ALREADY WON MY HEART ♡
+</footer>
+
+<script src="script.js"></script>
+
+<script>
+
+/* =====================================
+   CATCH MY LOVE GAME
+===================================== */
+
+const gameArea = document.getElementById("gameArea");
+const scoreDisplay = document.getElementById("score");
+const gameStatus = document.getElementById("gameStatus");
+const startButton = document.getElementById("startGame");
+const gameReward = document.getElementById("gameReward");
+
+let score = 0;
+let playing = false;
+
+let heartTimer = null;
+let gameTimeout = null;
+let countdownTimer = null;
+
+let heartCount = 0;
+
+const targetScore = 10;
+const gameDuration = 20000;
+
+
+/* =====================================
+   START GAME
+===================================== */
+
+startButton.addEventListener("click", startGame);
+
+function startGame() {
+
+    clearInterval(heartTimer);
+    clearTimeout(gameTimeout);
+    clearTimeout(countdownTimer);
+
+    playing = false;
+    score = 0;
+    heartCount = 0;
+
+    scoreDisplay.textContent = "0";
+    gameStatus.textContent = "GET READY ♡";
+
+    gameReward.innerHTML = "";
+    gameReward.classList.remove("reward-show");
+
+    gameArea.innerHTML = "";
+
+    startButton.disabled = true;
+    startButton.textContent = "Get ready... ♡";
+
+    countdown(3);
+
+}
+
+
+/* =====================================
+   COUNTDOWN
+===================================== */
+
+function countdown(number) {
+
+    gameArea.innerHTML = "";
+
+    const count = document.createElement("div");
+
+    count.className = "countdown";
+
+    gameArea.appendChild(count);
+
+    if (number > 0) {
+
+        count.textContent = number;
+
+        countdownTimer = setTimeout(() => {
+            countdown(number - 1);
+        }, 850);
+
+    } else {
+
+        count.textContent = "GO! ♡";
+
+        countdownTimer = setTimeout(() => {
+
+            gameArea.innerHTML = "";
+
+            beginGame();
+
+        }, 650);
+
+    }
+
+}
+
+
+/* =====================================
+   BEGIN GAME
+===================================== */
+
+function beginGame() {
+
+    playing = true;
+
+    gameStatus.textContent = "CATCH THEM! ♡";
+
+    startButton.textContent = "Playing... ♡";
+
+    heartTimer = setInterval(createGameHeart, 650);
+
+    gameTimeout = setTimeout(() => {
+
+        if (playing) {
+            endGame();
+        }
+
+    }, gameDuration);
+
+}
+
+
+/* =====================================
+   CREATE HEART TARGET
+===================================== */
+
+function createGameHeart() {
+
+    if (!playing || heartCount >= 3) return;
+
+    const heart = document.createElement("button");
+
+    heart.className = "game-heart";
+    heart.type = "button";
+
+    heart.setAttribute("aria-label", "Catch this heart");
+
+    const heartTypes = ["💗", "💖", "💕", "❤️", "💘"];
+
+    heart.textContent =
+        heartTypes[Math.floor(Math.random() * heartTypes.length)];
+
+    const areaWidth = gameArea.clientWidth;
+    const areaHeight = gameArea.clientHeight;
+
+    const x = Math.random() * Math.max(0, areaWidth - 55);
+    const y = Math.random() * Math.max(0, areaHeight - 65);
+
+    heart.style.left = x + "px";
+    heart.style.top = y + "px";
+
+    gameArea.appendChild(heart);
+
+    heartCount++;
+
+    let removed = false;
+
+    function removeHeart() {
+
+        if (removed) return;
+
+        removed = true;
+
+        heart.remove();
+
+        heartCount--;
+
+    }
+
+    const disappearTimer = setTimeout(removeHeart, 1800);
+
+    heart.addEventListener("click", () => {
+
+        if (!playing || removed) return;
+
+        clearTimeout(disappearTimer);
+
+        removed = true;
+
+        heart.classList.add("heart-caught");
+
+        score++;
+
+        scoreDisplay.textContent = score;
+
+        scoreDisplay.classList.remove("score-pop");
+
+        void scoreDisplay.offsetWidth;
+
+        scoreDisplay.classList.add("score-pop");
+
+        createMiniHearts(x, y);
+
+        heartCount--;
+
+        setTimeout(() => heart.remove(), 350);
+
+        if (score >= targetScore) {
+            winGame();
+        }
+
+    });
+
+}
+
+
+/* =====================================
+   MINI HEART EFFECT
+===================================== */
+
+function createMiniHearts(x, y) {
+
+    for (let i = 0; i < 4; i++) {
+
+        const mini = document.createElement("span");
+
+        mini.textContent = "♡";
+
+        mini.style.position = "absolute";
+        mini.style.left = x + "px";
+        mini.style.top = y + "px";
+        mini.style.color = "#a76b75";
+        mini.style.pointerEvents = "none";
+        mini.style.zIndex = "8";
+
+        mini.animate([
+            {
+                transform: "translate(0,0) scale(.5)",
+                opacity: 1
+            },
+            {
+                transform:
+                `translate(${Math.random() * 80 - 40}px,-65px) scale(1.5)`,
+                opacity: 0
+            }
+        ], {
+            duration: 650,
+            easing: "ease-out"
+        });
+
+        gameArea.appendChild(mini);
+
+        setTimeout(() => mini.remove(), 700);
+
+    }
+
+}
+
+
+/* =====================================
+   WIN GAME
+===================================== */
+
+function winGame() {
+
+    if (!playing) return;
+
+    playing = false;
+
+    clearInterval(heartTimer);
+    clearTimeout(gameTimeout);
+    clearTimeout(countdownTimer);
+
+    heartCount = 0;
+
+    gameArea.innerHTML = "";
+
+    gameStatus.textContent = "YOU DID IT! ♡";
+
+    startButton.disabled = false;
+    startButton.textContent = "Play again ♡";
+
+    gameReward.innerHTML = `
+        💗 YOU CAUGHT THEM ALL! 💗<br><br>
+        !!YES YOU WON!!<br>
+        If I could give you one thing in this world,<br>
+        it would be the ability to see yourself<br>
+        through my eyes.<br><br>
+
+        Then you'd know just how special<br>
+        you are to me.<br><br>
+
+        <strong>🌹AND I'M THE PRICE🌹</strong>
+    `;
+
+    gameReward.classList.remove("reward-show");
+
+    void gameReward.offsetWidth;
+
+    gameReward.classList.add("reward-show");
+
+    createConfetti();
+
+}
+
+
+/* =====================================
+   CONFETTI
+===================================== */
+
+function createConfetti() {
+
+    for (let i = 0; i < 45; i++) {
+
+        const confetti = document.createElement("span");
+
+        confetti.className = "confetti";
+
+        confetti.textContent =
+            ["♡", "♥", "✧", "✦", "💕"][
+                Math.floor(Math.random() * 5)
+            ];
+
+        confetti.style.left = Math.random() * 100 + "%";
+
+        confetti.style.animationDelay =
+            Math.random() * 1.5 + "s";
+
+        confetti.style.fontSize =
+            (10 + Math.random() * 12) + "px";
+
+        gameArea.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 4500);
+
+    }
+
+}
+
+
+/* =====================================
+   GAME OVER
+===================================== */
+
+function endGame() {
+
+    if (!playing) return;
+
+    playing = false;
+
+    clearInterval(heartTimer);
+    clearTimeout(gameTimeout);
+
+    gameArea.innerHTML = "";
+
+    heartCount = 0;
+
+    gameStatus.textContent = "TIME'S UP ♡";
+
+    startButton.disabled = false;
+
+    startButton.textContent = "Try again ♡";
+
+    gameReward.innerHTML = `
+        Almost there, sweetheart! ♡<br>
+        You caught ${score} out of 10 hearts.<br><br>
+        Give it another try! 💗
+    `;
+
+    gameReward.classList.remove("reward-show");
+
+    void gameReward.offsetWidth;
+
+    gameReward.classList.add("reward-show");
+
+}
+
+
+/* =====================================
+   FLOATING BACKGROUND HEARTS
+===================================== */
+
+function createBackgroundHeart() {
+
+    const heart = document.createElement("span");
+
+    heart.className = "floating-heart";
+
+    heart.textContent = ["♡", "♥", "ღ", "💕"][
+        Math.floor(Math.random() * 4)
+    ];
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (12 + Math.random() * 15) + "px";
+
+    heart.style.animationDuration =
+        (6 + Math.random() * 5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 11000);
+
+}
+
+
+/* =====================================
+   GOLDEN SPARKLES
+===================================== */
+
+function createSparkle() {
+
+    const sparkle = document.createElement("span");
+
+    sparkle.className = "sparkle";
+
+    sparkle.style.left = Math.random() * 100 + "vw";
+
+    sparkle.style.animationDuration =
+        (4 + Math.random() * 5) + "s";
+
+    document.body.appendChild(sparkle);
+
+    setTimeout(() => sparkle.remove(), 10000);
+
+}
+
+
+/* =====================================
+   DECORATION INTERVALS
+===================================== */
+
+const backgroundHeartInterval =
+    setInterval(createBackgroundHeart, 1100);
+
+const sparkleInterval =
+    setInterval(createSparkle, 550);
+
+
+/* REDUCED MOTION */
+
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+
+    clearInterval(backgroundHeartInterval);
+    clearInterval(sparkleInterval);
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=0.7">
+<meta name="theme-color" content="#f3e8df">
+
+<title>Little Stars ♡</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* ==========================================
+   VINTAGE CELESTIAL LOVE LETTER
+   Matching letter.html
+========================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(231,190,180,.3), transparent 35%),
+        radial-gradient(circle at 90% 85%, rgba(216,171,159,.2), transparent 35%),
+        linear-gradient(135deg, #f5e9dc, #ead8cb, #f7e9e4);
+    color: #684b50;
+}
+
+/* PAGE */
+
+.paper-page {
+    position: relative;
+    overflow: hidden;
+    padding: 42px 25px;
+    border: 1px solid rgba(150,105,91,.3);
+    border-radius: 5px;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 31px,
+            rgba(151,111,99,.05) 32px
+        ),
+        #f8eee1;
+    box-shadow: 0 15px 40px rgba(92,58,52,.15);
+    animation: pageEnter 1s ease both;
+}
+
+.paper-page::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(150,105,91,.18);
+    pointer-events: none;
+}
+
+.paper-page::after {
+    content: "✧";
+    position: absolute;
+    right: 18px;
+    top: 15px;
+    font-family: Georgia, serif;
+    font-size: 75px;
+    color: rgba(174,112,119,.09);
+    pointer-events: none;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* INTRO */
+
+.kicker,
+h1,
+.intro {
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 1s ease both;
+}
+
+.kicker {
+    color: #a36d72;
+    letter-spacing: 3px;
+    animation-delay: .2s;
+}
+
+h1 {
+    font-family: Georgia, serif;
+    font-weight: normal;
+    color: #81545b;
+    animation-delay: .4s;
+}
+
+h1 em {
+    color: #bd7884;
+}
+
+.intro {
+    font-family: Georgia, serif;
+    color: #896b68;
+    line-height: 1.9;
+    animation-delay: .6s;
+}
+
+.intro small {
+    color: #a47775;
+    font-style: italic;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* CELESTIAL DECORATIONS */
+
+.star-sky {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.sky-star {
+    position: absolute;
+    color: #bd8580;
+    opacity: .35;
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0%,100% {
+        opacity: .18;
+        transform: scale(.7);
+    }
+    50% {
+        opacity: .85;
+        transform: scale(1.3);
+        text-shadow: 0 0 10px rgba(189,133,128,.5);
+    }
+}
+
+/* SHOOTING STARS */
+
+.shooting-star {
+    position: fixed;
+    width: 90px;
+    height: 2px;
+    background: linear-gradient(90deg, #bd8580, transparent);
+    transform: rotate(-35deg);
+    pointer-events: none;
+    z-index: 1;
+    animation: shoot 1.5s linear forwards;
+}
+
+@keyframes shoot {
+    from {
+        opacity: 0;
+        transform: translate(0,0) rotate(-35deg);
+    }
+    15% {
+        opacity: .9;
+    }
+    to {
+        opacity: 0;
+        transform: translate(-220px,180px) rotate(-35deg);
+    }
+}
+
+/* =====================================
+   SECRET CARDS - PERFECTLY CENTERED
+===================================== */
+
+.star-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    width: 100%;
+    max-width: 100%;
+
+    gap: 15px;
+
+    margin: 35px auto;
+    padding: 0;
+
+    position: relative;
+    z-index: 2;
+
+    justify-content: center;
+    align-items: stretch;
+
+    box-sizing: border-box;
+}
+
+.secret-card {
+    position: relative;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 175px;
+
+    padding: 18px 10px;
+
+    box-sizing: border-box;
+    overflow: hidden;
+
+    border: 1px solid rgba(150,105,91,.32);
+    border-radius: 4px;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 27px,
+            rgba(151,111,99,.04) 28px
+        ),
+        linear-gradient(145deg,#fff8ed,#f1dfd1);
+
+    color: #80545a;
+    cursor: pointer;
+
+    box-shadow: 0 8px 20px rgba(65,39,35,.09);
+
+    opacity: 0;
+    animation: cardEnter .8s ease forwards;
+
+    transition: transform .35s ease, box-shadow .35s ease;
+}
+
+@keyframes cardEnter {
+    from {
+        opacity: 0;
+        transform: translateY(30px) rotate(-3deg) scale(.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(0) scale(1);
+    }
+}
+
+.secret-card:hover {
+    transform: translateY(-7px) rotate(-1deg);
+    box-shadow: 0 15px 25px rgba(100,65,60,.16);
+    background: #fff9ef;
+}
+
+.secret-card:focus-visible {
+    outline: 3px solid #a76b75;
+    outline-offset: 4px;
+}
+
+.secret-card .big-icon {
+    display: block;
+    font-size: 40px;
+    margin-bottom: 13px;
+    color: #b77e80;
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    0%,100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+    50% {
+        transform: translateY(-5px) rotate(5deg);
+    }
+}
+
+.secret-card b {
+    display: block;
+    font-family: Georgia, serif;
+    font-size: 13px;
+    font-weight: normal;
+    color: #81545b;
+}
+
+.secret-card small {
+    display: block;
+    margin-top: 9px;
+    font-family: Georgia, serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #a17d76;
+}
+
+.secret-card.opened {
+    background: #f0ded1;
+    border-color: #bd8580;
+}
+
+/* MODAL BACKGROUND */
+
+.letter-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background: rgba(67,43,43,.65);
+    backdrop-filter: blur(5px);
+
+    opacity: 0;
+    visibility: hidden;
+    transition: .4s ease;
+}
+
+.letter-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* VINTAGE POPUP PAPER */
+
+.letter-paper {
+    position: relative;
+    width: min(100%,380px);
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 35px 25px;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 30px,
+            rgba(151,111,99,.09) 31px
+        ),
+        #fff9ee;
+
+    border: 1px solid #dfc5a9;
+    box-shadow: 0 20px 60px rgba(0,0,0,.3);
+
+    text-align: center;
+
+    transform: translateY(35px) scale(.88) rotate(-3deg);
+    transition: .55s cubic-bezier(.2,.8,.3,1);
+}
+
+.letter-paper::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px dashed rgba(150,105,91,.22);
+    pointer-events: none;
+}
+
+.letter-modal.active .letter-paper {
+    transform: translateY(0) scale(1) rotate(0);
+}
+
+.letter-decoration {
+    position: relative;
+    color: #b77e80;
+    font-size: 27px;
+    margin-bottom: 12px;
+}
+
+.letter-paper h2 {
+    position: relative;
+    font-family: Georgia, serif;
+    font-weight: normal;
+    color: #a26770;
+    font-size: 25px;
+}
+
+.letter-paper p {
+    position: relative;
+    color: #765e68;
+    line-height: 1.9;
+    font-family: Georgia, serif;
+    font-size: 15px;
+}
+
+/* POPUP BUTTON */
+
+.letter-close {
+    position: relative;
+    margin-top: 18px;
+    padding: 11px 20px;
+
+    border: 1px solid #b7837d;
+    border-radius: 3px;
+
+    background: linear-gradient(135deg,#f8e9df,#ead0c4);
+    color: #80545a;
+
+    font-family: Georgia, serif;
+    font-size: 13px;
+    cursor: pointer;
+
+    box-shadow: 0 5px 12px rgba(94,57,50,.1);
+    transition: .3s ease;
+}
+
+.letter-close:hover {
+    transform: translateY(-3px);
+    background: #a76b75;
+    color: #fff8f0;
+}
+
+/* FLOATING HEARTS */
+
+.floating-heart {
+    position: fixed;
+    bottom: -30px;
+    color: #b77e80;
+    pointer-events: none;
+    z-index: 1;
+    animation: heartFloat 8s linear forwards;
+}
+
+@keyframes heartFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(0) rotate(0);
+    }
+    15% {
+        opacity: .45;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-110vh) rotate(45deg);
+    }
+}
+
+/* NAVIGATION BUTTONS */
+
+.nav-row {
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 1s ease 1.5s both;
+}
+
+.nav-row .button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    padding: 12px 21px;
+
+    border: 1px solid #b7837d;
+    border-radius: 3px;
+
+    background: linear-gradient(135deg,#f8e9df,#ead0c4);
+    color: #80545a;
+
+    text-decoration: none;
+    font-family: Georgia, serif;
+    font-size: 13px;
+
+    box-shadow: 0 5px 12px rgba(94,57,50,.1);
+    transition: .3s ease;
+}
+
+.nav-row .button:hover {
+    transform: translateY(-4px);
+    background: #a76b75;
+    color: #fff8f0;
+}
+
+/* MOBILE */
+
+@media(max-width:480px) {
+    .paper-page {
+        padding: 35px 17px;
+    }
+
+    .star-grid {
+        gap: 8px;
+    }
+
+    .secret-card {
+        min-height: 155px;
+        padding: 13px 5px;
+    }
+
+    .secret-card .big-icon {
+        font-size: 34px;
+    }
+
+    .secret-card b {
+        font-size: 11px;
+    }
+
+    .secret-card small {
+        font-size: 9px;
+        letter-spacing: .5px;
+    }
+
+    .letter-paper {
+        padding: 30px 18px;
+    }
+}
+
+/* REDUCED MOTION */
+
+@media(prefers-reduced-motion:reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="grain"></div>
+
+<!-- ANIMATED VINTAGE SKY -->
+<div class="star-sky" id="starSky"></div>
+
+<header class="topbar">
+
+    <a class="brand" href="index.html">
+        ♡ OUR LITTLE LOVE STORY
+    </a>
+
+    <a class="mini-link" href="index.html">
+        ← Start
+    </a>
+
+</header>
+
+<main class="page-shell">
+
+<section class="paper-page">
+
+    <p class="kicker">
+        CHAPTER I · A SKY FULL OF REASONS
+    </p>
+
+    <h1>
+        Little stars,<br>
+        <em>little reminders</em>
+    </h1>
+
+    <p class="intro">
+        Choose a card and click<br>Each one is hiding
+        a little thing I hope you always remember.
+        </p>
+
+        <br><br>
+
+        <small>Choose and Click to read a Letter♡</small>
+    </p>
+
+
+    <!-- SECRET STAR CARDS -->
+
+    <div class="star-grid">
+
+        <button class="secret-card"
+        type="button"
+        data-title="A Little Reminder ♡"
+        data-message="Even the most ordinary day feels special when you're in it. You make little moments feel like something worth remembering. Never forget how much happiness you bring into my life.">
+
+            <span class="big-icon">☀️</span>
+            <b>Sun</b>
+            <small>Tap to reveal ♡</small>
+
+        </button>
+
+
+        <button class="secret-card"
+        type="button"
+        data-title="My Safe Place ☾"
+        data-message="I hope you always feel safe being your real, imperfect, wonderful self with me. You don't have to be perfect. I want to know you, understand you, and appreciate every version of you.">
+
+            <span class="big-icon">🌕</span>
+            <b>Moon</b>
+            <small>Tap to reveal ♡</small>
+
+        </button>
+
+
+        <button class="secret-card"
+        type="button"
+        data-title="Our Little Universe ✧"
+        data-message="Thank you for every little conversation, laugh, and memory that I get to keep close. I hope we continue creating beautiful memories together, one little moment at a time.">
+
+            <span class="big-icon">⭐</span>
+            <b>Star</b>
+            <small>Tap to reveal ♡</small>
+
+        </button>
+        
+        
+    </div>
+
+
+    <!-- LOVE LETTER POPUP -->
+
+    <div class="letter-modal" id="letterModal"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="letterTitle">
+
+        <div class="letter-paper">
+
+            <div class="letter-decoration">✧ ☾ ✧</div>
+
+            <h2 id="letterTitle">
+                A Little Reminder ♡
+            </h2>
+
+            <p id="letterMessage">
+                Your secret message will appear here.
+            </p>
+
+            <div class="letter-decoration">♡</div>
+
+            <button class="letter-close" id="closeLetter" type="button">
+                Keep this in my heart ♡
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="nav-row">
+
+        <a class="button secondary" href="index.html">
+            ← Back
+        </a>
+
+        <a class="button" href="flowers.html">
+            Follow the flowers →
+        </a>
+
+    </div>
+
+
+    <div class="page-number">
+        02 / A SKY FULL OF YOU
+    </div>
+
+</section>
+</main>
+
+<footer class="site-footer">
+    SOMEWHERE, IN EVERY UNIVERSE, I'D FIND YOU ♡
+</footer>
+
+
+<script src="script.js"></script>
+
+<script>
+
+/* =====================================
+   REDUCED MOTION CHECK
+===================================== */
+
+const motionAllowed =
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+
+/* =====================================
+   CREATE RANDOM TWINKLING STARS
+===================================== */
+
+const starSky = document.getElementById("starSky");
+
+for (let i = 0; i < 45; i++) {
+
+    const star = document.createElement("span");
+
+    star.className = "sky-star";
+
+    star.textContent = ["✦", "✧", "·", "⋆"][
+        Math.floor(Math.random() * 4)
+    ];
+
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.top = Math.random() * 100 + "vh";
+
+    star.style.fontSize =
+        (8 + Math.random() * 12) + "px";
+
+    star.style.animationDelay =
+        Math.random() * 4 + "s";
+
+    starSky.appendChild(star);
+
+}
+
+
+/* =====================================
+   SECRET MESSAGE POPUP
+===================================== */
+
+const secretCards =
+    document.querySelectorAll(".secret-card");
+
+const letterModal =
+    document.getElementById("letterModal");
+
+const letterTitle =
+    document.getElementById("letterTitle");
+
+const letterMessage =
+    document.getElementById("letterMessage");
+
+const closeLetter =
+    document.getElementById("closeLetter");
+
+
+secretCards.forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        letterTitle.textContent = card.dataset.title;
+
+        letterMessage.textContent = card.dataset.message;
+
+        card.classList.add("opened");
+
+        card.querySelector("small").textContent = "Revealed ♡";
+
+        letterModal.classList.add("active");
+
+        closeLetter.focus();
+
+        if (motionAllowed) {
+            createShootingStars();
+        }
+
+    });
+
+});
+
+
+/* CLOSE POPUP */
+
+function closeLoveLetter() {
+
+    letterModal.classList.remove("active");
+
+}
+
+closeLetter.addEventListener("click", closeLoveLetter);
+
+
+/* CLICK OUTSIDE */
+
+letterModal.addEventListener("click", (event) => {
+
+    if (event.target === letterModal) {
+        closeLoveLetter();
+    }
+
+});
+
+
+/* ESCAPE KEY */
+
+document.addEventListener("keydown", (event) => {
+
+    if (event.key === "Escape") {
+        closeLoveLetter();
+    }
+
+});
+
+
+/* =====================================
+   SHOOTING STARS
+===================================== */
+
+function createShootingStars() {
+
+    for (let i = 0; i < 5; i++) {
+
+        const shooting = document.createElement("span");
+
+        shooting.className = "shooting-star";
+
+        shooting.style.left =
+            (20 + Math.random() * 80) + "vw";
+
+        shooting.style.top =
+            (10 + Math.random() * 60) + "vh";
+
+        shooting.style.animationDelay =
+            (Math.random() * .5) + "s";
+
+        document.body.appendChild(shooting);
+
+        setTimeout(() => shooting.remove(), 2200);
+
+    }
+
+}
+
+
+/* =====================================
+   FLOATING HEARTS
+===================================== */
+
+function createFloatingHeart() {
+
+    const heart = document.createElement("span");
+
+    heart.className = "floating-heart";
+
+    heart.textContent = ["♡", "♥", "ღ", "💕"][
+        Math.floor(Math.random() * 4)
+    ];
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (12 + Math.random() * 15) + "px";
+
+    heart.style.animationDuration =
+        (6 + Math.random() * 5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 11000);
+
+}
+
+
+/* =====================================
+   START AMBIENT ANIMATIONS
+===================================== */
+
+if (motionAllowed) {
+
+    setInterval(createFloatingHeart, 1500);
+
+    setInterval(() => {
+
+        if (Math.random() > .5) {
+            createShootingStars();
+        }
+
+    }, 6000);
+
+}
+
+</script>
+
+</body>
+</html>

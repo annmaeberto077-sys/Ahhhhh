@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=0.7>
+<meta name="theme-color" content="#f3e8df">
+
+<title>Our Little Love Story ♡</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* ==========================================
+   VINTAGE LOVE STORY HOMEPAGE
+   Matching letter.html design
+========================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(231,190,180,.35), transparent 35%),
+        radial-gradient(circle at 90% 85%, rgba(216,171,159,.25), transparent 35%),
+        linear-gradient(135deg, #f5e9dc, #ead8cb, #f7e9e4);
+    color: #684b50;
+}
+
+/* BACKGROUND */
+
+.home-background {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(212,166,157,.15), transparent 35%),
+        radial-gradient(circle at 85% 75%, rgba(189,130,133,.12), transparent 35%);
+}
+
+.grain {
+    pointer-events: none;
+}
+
+/* HEADER */
+
+.topbar {
+    position: relative;
+    z-index: 5;
+}
+
+/* PAGE ENTRANCE */
+
+.hero {
+    animation: postcardEnter 1.2s cubic-bezier(.2,.8,.3,1) both;
+}
+
+@keyframes postcardEnter {
+    from {
+        opacity: 0;
+        transform: translateY(35px) rotate(-2deg) scale(.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(0) scale(1);
+    }
+}
+
+/* POSTCARD */
+
+.postcard {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    padding: 48px 28px;
+    border: 1px solid rgba(150,105,91,.35);
+    border-radius: 5px;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 31px,
+            rgba(151,111,99,.045) 32px
+        ),
+        linear-gradient(145deg, #fff8ed, #f5e8d9);
+    box-shadow:
+        0 18px 40px rgba(92,58,52,.15),
+        inset 0 0 35px rgba(255,255,255,.35);
+}
+
+.postcard::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px dashed rgba(153,112,139,.35);
+    border-radius: 3px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.postcard::after {
+    content: "♡";
+    position: absolute;
+    right: 15px;
+    bottom: 5px;
+    font-family: Georgia, serif;
+    font-size: 110px;
+    color: rgba(174,112,119,.07);
+    pointer-events: none;
+}
+
+/* POSTMARK */
+
+.postmark {
+    animation: stampEnter 1s ease .8s both;
+    transform-origin: center;
+}
+
+@keyframes stampEnter {
+    from {
+        opacity: 0;
+        transform: rotate(-25deg) scale(1.5);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+    }
+}
+
+/* TEXT */
+
+.kicker {
+    color: #a36d72;
+    letter-spacing: 3px;
+    animation: textReveal .9s ease .3s both;
+}
+
+.hero h1 {
+    color: #81545b;
+    font-family: Georgia, serif;
+    font-weight: normal;
+    line-height: 1.2;
+    animation: textReveal 1s ease .5s both;
+}
+
+.hero h1 em {
+    color: #bd7884;
+    font-family: Georgia, serif;
+}
+
+.hero-copy {
+    color: #896b68;
+    font-family: Georgia, serif;
+    line-height: 1.9;
+    animation: textReveal 1s ease .7s both;
+}
+
+.ornament {
+    color: #b77e80;
+    animation: ornamentGlow 3s ease-in-out infinite;
+}
+
+@keyframes textReveal {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ornamentGlow {
+    50% {
+        opacity: .55;
+    }
+}
+
+/* STAMP */
+
+.stamp {
+    border: 1px solid #b7837d;
+    color: #95636a;
+    background: #f8e9df;
+    animation: stampPulse 3s ease-in-out infinite;
+}
+
+@keyframes stampPulse {
+    50% {
+        transform: scale(1.04) rotate(2deg);
+        box-shadow: 0 0 12px rgba(166,116,120,.2);
+    }
+}
+
+/* FLOWER */
+
+.home-flower {
+    display: inline-block;
+    font-size: 34px;
+    margin: 18px 0 10px;
+    animation: flowerSway 3s ease-in-out infinite;
+}
+
+@keyframes flowerSway {
+    0%,100% { transform: rotate(-8deg); }
+    50% { transform: rotate(8deg) translateY(-5px); }
+}
+
+/* VINTAGE BUTTONS */
+
+.open-surprise,
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 23px;
+    border: 1px solid #b7837d;
+    border-radius: 3px;
+    background: linear-gradient(135deg, #f8e9df, #ead0c4);
+    color: #80545a;
+    text-decoration: none;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    box-shadow: 0 5px 12px rgba(94,57,50,.1);
+    transition: .35s ease;
+}
+
+.open-surprise {
+    animation: buttonAppear 1s ease 1s both;
+}
+
+.open-surprise:hover,
+.button:hover {
+    transform: translateY(-4px);
+    background: #a76b75;
+    color: #fff8f0;
+    box-shadow: 0 10px 20px rgba(94,57,50,.18);
+}
+
+@keyframes buttonAppear {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* HANDWRITTEN */
+
+.handwritten {
+    font-family: "Brush Script MT", "Segoe Script", cursive !important;
+    color: #a26770;
+    animation: textReveal 1s ease 1.2s both;
+}
+
+/* FLOATING HEARTS */
+
+.home-heart {
+    position: fixed;
+    bottom: -30px;
+    color: #b77e80;
+    pointer-events: none;
+    z-index: 1;
+    animation: heartRise 8s linear forwards;
+}
+
+@keyframes heartRise {
+    0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+    }
+    15% { opacity: .45; }
+    100% {
+        transform: translateY(-110vh) rotate(50deg);
+        opacity: 0;
+    }
+}
+
+/* VINTAGE GOLD SPARKLES */
+
+.home-sparkle {
+    position: fixed;
+    top: -10px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #c69b68;
+    box-shadow: 0 0 8px #e4c69b;
+    pointer-events: none;
+    z-index: 1;
+    animation: sparkleFall linear forwards;
+}
+
+@keyframes sparkleFall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* CHAPTER SECTION */
+
+.chapter-section {
+    position: relative;
+    z-index: 2;
+    margin: 38px auto;
+    animation: textReveal 1s ease 1.3s both;
+}
+
+.chapter-heading {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.chapter-heading h2 {
+    font-family: Georgia, serif;
+    font-weight: normal;
+    color: #81545b;
+    font-size: clamp(25px, 5vw, 33px);
+}
+
+.chapter-heading p {
+    font-family: Georgia, serif;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #94736e;
+}
+
+/* CHAPTER CARDS */
+
+.chapter-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 14px;
+}
+
+.chapter-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #80545a;
+    padding: 17px 13px;
+    border: 1px solid rgba(150,105,91,.3);
+    border-radius: 4px;
+    background:
+        linear-gradient(145deg, rgba(255,250,241,.95), rgba(241,222,208,.9));
+    box-shadow: 0 6px 16px rgba(80,50,45,.08);
+    transition: .35s ease;
+}
+
+.chapter-card::before {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border: 1px dashed rgba(160,111,105,.18);
+    pointer-events: none;
+}
+
+.chapter-card:hover {
+    transform: translateY(-5px) rotate(-.5deg);
+    background: #fff8ed;
+    border-color: #bd8580;
+    box-shadow: 0 12px 22px rgba(100,65,60,.14);
+}
+
+.chapter-icon {
+    font-size: 27px;
+    flex-shrink: 0;
+}
+
+.chapter-info strong {
+    display: block;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: #81545b;
+}
+
+.chapter-info small {
+    display: block;
+    margin-top: 5px;
+    font-family: Georgia, serif;
+    font-size: 10px;
+    color: #a17d76;
+    line-height: 1.5;
+}
+
+/* ENDING */
+
+.home-ending {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    margin: 38px auto 12px;
+    padding: 22px 12px;
+    animation: textReveal 1s ease 1.5s both;
+}
+
+.home-ending .ending-heart {
+    display: inline-block;
+    font-size: 30px;
+    color: #b77e80;
+    animation: heartBeat 1.8s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.home-ending p {
+    font-family: Georgia, serif;
+    font-style: italic;
+    line-height: 1.9;
+    color: #8b6862;
+}
+
+/* PROGRESS */
+
+.chapter-progress {
+    margin: 25px 0;
+    text-align: center;
+}
+
+.progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(151,110,100,.15);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-fill {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg,#bd8580,#d6a78e,#a76b75);
+    border-radius: 20px;
+    transition: width 1.5s ease;
+}
+
+.progress-label {
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: #987c76;
+}
+
+/* DECORATIONS */
+
+.tape {
+    background: rgba(211,174,150,.45);
+    border-color: rgba(150,105,91,.08);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:480px) {
+    .postcard {
+        padding: 42px 19px;
+    }
+
+    .chapter-grid {
+        gap: 9px;
+    }
+
+    .chapter-card {
+        padding: 13px 9px;
+        gap: 8px;
+    }
+
+    .chapter-icon {
+        font-size: 23px;
+    }
+
+    .chapter-info strong {
+        font-size: 12px;
+    }
+
+    .chapter-info small {
+        font-size: 9px;
+    }
+
+    .postmark {
+        font-size: 10px;
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="grain"></div>
+<div class="home-background"></div>
+
+<header class="topbar">
+
+    <a class="brand" href="index.html">
+        ♡ OUR LITTLE LOVE STORY
+    </a>
+
+    <span class="stamp">
+        ♡04♡ FOUR MONTHS
+    </span>
+
+</header>
+
+<main class="page-shell">
+
+<section class="hero postcard">
+
+    <div class="postmark">
+        SPECIAL<br>
+        DELIVERY<br>
+        ♡ 04 ♡
+    </div>
+
+    <p class="kicker">
+        A LITTLE WEBSITE MADE WITH ALL MY HEART
+    </p>
+
+    <h1>
+        Happy 4th Monthsary,<br>
+        <em>My Future Architect!</em>
+    </h1>
+
+    <div class="ornament">
+        ❦────♡────❦
+    </div>
+
+    <p class="hero-copy">
+        This simple surprise of mine is made<u> especially for my:</u><br>
+        <strong>💙Babi, Lovey, Wifey, Mamih, Nee💙</strong>
+    </p>
+
+    <div class="home-flower">🌷</div>
+    <br>
+    <a class="button open-surprise" href="stars.html">
+        Open a Surprise♡ →
+    </a>
+
+    <p class="handwritten tiny">
+        ☝️CLICK☝️
+    </p>
+
+    <div class="tape tape-left"></div>
+    <div class="tape tape-right"></div>
+
+</section>
+
+
+<!-- CHAPTER NAVIGATION -->
+
+<section class="chapter-section">
+
+    <div class="chapter-heading">
+
+        <p class="kicker">
+            YOUR LITTLE JOURNEY STARTS HERE
+        </p>
+
+        <h2>Explore Our Chapters ♡</h2>
+
+        <p>
+            Every click brings you closer<br>
+            to another little piece of our story.
+        </p>
+
+    </div>
+
+    <div class="chapter-grid">
+
+        <a href="stars.html" class="chapter-card">
+            <span class="chapter-icon">🌙</span>
+            <span class="chapter-info">
+                <strong>Chapter I</strong>
+                <small>Little Stars & Secret Messages</small>
+            </span>
+        </a>
+
+        <a href="flowers.html" class="chapter-card">
+            <span class="chapter-icon">🌷</span>
+            <span class="chapter-info">
+                <strong>Chapter II</strong>
+                <small>Our Flower Garden</small>
+            </span>
+        </a>
+
+        <a href="game.html" class="chapter-card">
+            <span class="chapter-icon">💗</span>
+            <span class="chapter-info">
+                <strong>Chapter III</strong>
+                <small>Catch My Love Arcade</small>
+            </span>
+        </a>
+
+        <a href="gallery.html" class="chapter-card">
+            <span class="chapter-icon">🎧</span>
+            <span class="chapter-info">
+                <strong>Chapter IV</strong>
+                <small>Some Songs To Play</small>
+            </span>
+        </a>
+
+        <a href="letter.html" class="chapter-card">
+            <span class="chapter-icon">💌</span>
+            <span class="chapter-info">
+                <strong>Chapter V</strong>
+                <small>A Letter Just For You</small>
+            </span>
+        </a>
+
+        <a href="surprise.html" class="chapter-card">
+            <span class="chapter-icon">🎁</span>
+            <span class="chapter-info">
+                <strong>Final Surprise</strong>
+                <small>A Little Gift For You</small>
+            </span>
+        </a>
+
+    </div>
+
+    <div class="chapter-progress">
+
+        <span class="progress-label">
+            OUR LITTLE STORY · FIVE CHAPTERS
+        </span>
+
+        <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ENDING MESSAGE -->
+
+<section class="home-ending">
+
+    <div class="ending-heart">♡</div>
+
+    <p>
+        No matter how many chapters we write,<br>
+        my favorite part will always be<br>
+        having you in my story.
+    </p>
+
+    <p class="handwritten">
+        Your number 1. supporter🫰
+    </p>
+
+</section>
+
+
+</main>
+
+<footer class="site-footer">
+    MADE WITH LOVE, JUST FOR MY BABIII♡
+</footer>
+
+
+<script src="script.js"></script>
+
+<script>
+/* ======================================
+   FLOATING HEARTS
+====================================== */
+
+function createHomeHeart() {
+
+    const heart = document.createElement("span");
+
+    heart.className = "home-heart";
+
+    heart.textContent = ["♡", "♥", "ღ", "💕"][
+        Math.floor(Math.random() * 4)
+    ];
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (12 + Math.random() * 17) + "px";
+
+    heart.style.animationDuration =
+        (6 + Math.random() * 5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 11000);
+}
+
+const homeMotionAllowed =
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (homeMotionAllowed) {
+    setInterval(createHomeHeart, 1300);
+}
+
+
+/* ======================================
+   GOLDEN SPARKLES
+====================================== */
+
+function createHomeSparkle() {
+
+    const sparkle = document.createElement("span");
+
+    sparkle.className = "home-sparkle";
+
+    sparkle.style.left = Math.random() * 100 + "vw";
+
+    sparkle.style.animationDuration =
+        (4 + Math.random() * 5) + "s";
+
+    document.body.appendChild(sparkle);
+
+    setTimeout(() => sparkle.remove(), 10000);
+}
+
+if (homeMotionAllowed) {
+    setInterval(createHomeSparkle, 850);
+}
+
+
+/* ======================================
+   CHAPTER PROGRESS ANIMATION
+====================================== */
+
+window.addEventListener("load", () => {
+
+    const progress = document.getElementById("progressFill");
+
+    if (progress) {
+        setTimeout(() => {
+            progress.style.width = "100%";
+        }, 700);
+    }
+
+});
+
+
+/* ======================================
+   CHAPTER CARD CLICK EFFECT
+====================================== */
+
+document.querySelectorAll(".chapter-card").forEach(card => {
+
+    card.addEventListener("click", () => {
+        card.style.transform = "scale(.97)";
+    });
+
+});
+</script>
+
+</body>
+</html>

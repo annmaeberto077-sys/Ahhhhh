@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.7">
+    <meta name="theme-color" content="#f5e9dc">
+    <title>One Last Surprise ♡</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =====================================
+           FINAL SURPRISE - VINTAGE LOVE THEME
+        ===================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Georgia, "Times New Roman", serif;
+            color: #72534f;
+            background:
+                radial-gradient(circle at top left, #fff8ed, transparent 40%),
+                linear-gradient(135deg, #f5e9dc, #ead8cb, #f7e9e4);
+        }
+
+        .grain {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 10;
+            opacity: 0.12;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
+        }
+
+        /* TOP NAVIGATION */
+
+        .topbar {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 20px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            border-bottom: 1px solid rgba(167, 107, 117, 0.25);
+        }
+
+        .brand {
+            color: #80545a;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .mini-link {
+            color: #a26770;
+            text-decoration: none;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .mini-link:hover {
+            color: #80545a;
+            transform: translateX(-3px);
+        }
+
+        /* PAGE LAYOUT */
+
+        .page-shell {
+            width: 100%;
+            min-height: 80vh;
+            padding: 55px 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .final-page {
+            position: relative;
+            width: 100%;
+            max-width: 680px;
+            padding: 55px 45px;
+            text-align: center;
+            background: rgba(248, 238, 225, 0.96);
+            border: 1px solid #b7837d;
+            outline: 1px dashed rgba(167, 107, 117, 0.45);
+            outline-offset: -12px;
+            border-radius: 5px;
+            box-shadow:
+                0 15px 40px rgba(107, 73, 67, 0.15),
+                inset 0 0 35px rgba(190, 151, 126, 0.12);
+            animation: paperAppear 1s ease;
+        }
+
+        @keyframes paperAppear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .kicker {
+            color: #a26770;
+            font-size: 11px;
+            letter-spacing: 3px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            color: #80545a;
+            font-size: clamp(38px, 8vw, 62px);
+            line-height: 1.12;
+            margin: 0 0 22px;
+            font-weight: normal;
+        }
+
+        h1 em {
+            color: #b4777e;
+            font-family: "Brush Script MT", "Segoe Script", cursive;
+            font-weight: normal;
+        }
+
+        .intro {
+            max-width: 430px;
+            margin: 0 auto 30px;
+            color: #866c63;
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        /* VINTAGE BUTTONS */
+
+        .button {
+            display: inline-block;
+            padding: 13px 25px;
+            border: 1px solid #b7837d;
+            border-radius: 3px;
+            background: linear-gradient(135deg, #f8e9df, #ead0c4);
+            color: #80545a;
+            font-family: Georgia, serif;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(128, 84, 90, 0.12);
+        }
+
+        .button:hover {
+            background: #a76b75;
+            color: #fff9ee;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 16px rgba(128, 84, 90, 0.2);
+        }
+
+        .button:active {
+            transform: scale(0.97);
+        }
+
+        .secondary {
+            background: transparent;
+        }
+
+        /* FINAL GIFT REVEAL */
+
+        .final-reveal {
+            margin-top: 38px;
+            padding: 30px 25px;
+            background: rgba(255, 249, 238, 0.85);
+            border: 1px dashed #bd8b85;
+            border-radius: 4px;
+            animation: revealGift 1s ease;
+        }
+
+        .final-reveal[hidden] {
+            display: none;
+        }
+
+        @keyframes revealGift {
+            from {
+                opacity: 0;
+                transform: translateY(18px) scale(0.97);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .bouquet {
+            font-size: clamp(35px, 8vw, 55px);
+            letter-spacing: 8px;
+            margin-bottom: 15px;
+            animation: bouquetFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes bouquetFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-7px);
+            }
+        }
+
+        .ornament {
+            color: #b4777e;
+            font-size: 17px;
+            letter-spacing: 3px;
+            margin: 15px 0 20px;
+        }
+
+        .handwritten {
+            color: #a26770;
+            font-family: "Brush Script MT", "Segoe Script", cursive;
+            font-size: clamp(27px, 6vw, 38px);
+            font-weight: normal;
+        }
+
+        .final-reveal h2 {
+            margin: 10px 0 22px;
+        }
+
+        .final-reveal p {
+            color: #80665f;
+            font-size: 14px;
+            line-height: 2;
+            margin: 17px auto;
+            max-width: 460px;
+        }
+
+        .final-reveal p:last-child {
+            color: #a26770;
+            font-size: 20px;
+        }
+
+        /* PAGE NAVIGATION */
+
+        .nav-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 35px;
+        }
+
+        .page-number {
+            margin-top: 38px;
+            color: #ad827b;
+            font-size: 10px;
+            letter-spacing: 3px;
+        }
+
+        /* FOOTER */
+
+        .site-footer {
+            padding: 20px;
+            text-align: center;
+            color: #a26770;
+            font-size: 10px;
+            letter-spacing: 2px;
+            border-top: 1px solid rgba(167, 107, 117, 0.2);
+        }
+
+        /* MOBILE RESPONSIVE */
+
+        @media (max-width: 600px) {
+            .topbar {
+                padding: 17px 5%;
+            }
+
+            .brand {
+                font-size: 10px;
+                letter-spacing: 1px;
+            }
+
+            .mini-link {
+                font-size: 11px;
+            }
+
+            .page-shell {
+                padding: 35px 15px;
+            }
+
+            .final-page {
+                padding: 45px 25px;
+            }
+
+            .intro {
+                font-size: 14px;
+            }
+
+            .final-reveal {
+                padding: 25px 17px;
+            }
+
+            .final-reveal p {
+                font-size: 13px;
+            }
+
+            .nav-row {
+                flex-direction: column;
+            }
+
+            .nav-row .button {
+                width: 100%;
+                max-width: 230px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="grain"></div>
+
+    <header class="topbar">
+        <a class="brand" href="index.html">♡ OUR LITTLE LOVE STORY</a>
+        <a class="mini-link" href="letter.html">← Previous chapter</a>
+    </header>
+
+    <main class="page-shell">
+
+        <section class="paper-page final-page">
+
+            <p class="kicker">CHAPTER VI · OPEN ONLY WITH LOVE</p>
+
+            <h1>
+                One last surprise<br>
+                <em>Babi</em> ♡
+            </h1>
+
+            <p class="intro">
+                You made it through our little love story.
+                There's one more tiny gift waiting for you.
+            </p>
+
+            <button class="button" id="finalButton" type="button">
+                Open your final gift ♡
+            </button>
+
+            <div class="final-reveal" id="finalReveal" hidden>
+
+                <div class="bouquet">
+                    💐 🌷 💐
+                </div>
+
+                <div class="ornament">
+                    ❦ ────♡──── ❦
+                </div>
+
+                <h2 class="handwritten">
+                    Still you. Always you.
+                </h2>
+                  
+                 <div class="gallery-item">
+                 <img src="IkawatAko.jpg" width="180" height="200" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+                 </div>
+                
+                <p>
+                    Four months together, and I'm still grateful for every little moment we share. 
+                </p>
+                <p>
+                    I know hindi naman palaging perfect ang lahat,
+                    but I hope we continue to understand, support, and choose each other every day.
+                </p>
+                </p>
+
+                <p>
+                    Happy 4th Monthsary, my Babi.
+                    Thank you for being you, and for letting
+                    me be part of your world.<br><br>Here's to more beautiful memories together.
+                </p>
+
+                <p>
+                    I LOVE YOU MWAPSS! ♡
+                </p>
+
+                <p class="handwritten">
+                    In every little lifetime, I'd look for you. ✧
+                </p>
+
+            </div>
+
+            <div class="nav-row">
+
+                <a class="button secondary" href="letter.html">
+                    ← Back to my letter
+                </a>
+
+                <a class="button" href="index.html">
+                    Replay our story ↻
+                </a>
+
+            </div>
+
+            <div class="page-number">
+               AND THE STORY GOES ON…
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        HAPPY 4TH MONTHSARY, TO MY FUTURE ARCHITECT ♡
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+        // FINAL GIFT BUTTON
+
+        const finalButton = document.getElementById("finalButton");
+        const finalReveal = document.getElementById("finalReveal");
+
+        finalButton.addEventListener("click", function () {
+
+            finalReveal.hidden = false;
+
+            finalButton.textContent = "Your little gift is open ♡";
+            finalButton.disabled = true;
+
+            finalButton.style.opacity = "0.7";
+            finalButton.style.cursor = "default";
+
+            finalReveal.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        });
+    </script>
+
+</body>
+</html>
